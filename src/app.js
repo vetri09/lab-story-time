@@ -4,7 +4,7 @@
 //Return the types concatenated in a single variable
 function moreAboutHome (address, distanceFromTown, hasNeighbours)
 {
-    return `${address} ${distanceFromTown} ${hasNeighbours}`;   
+    return typeof(address)+typeof(distanceFromTown)+typeof(hasNeighbours);   
 }
 //Progression 2:
 //Check if the data given is of the right type
@@ -19,8 +19,23 @@ function moreAboutKaren (parents, noOfSiblings, isNuclearFamily)
 //Check which one those is not a number (NaN) and return that value
 function doesFriendExist (ageInText, ageInNumber)
 {
-    return isNaN(ageInText)==true ? "NaN" : typeof(ageInText)=="string" ? "NaN" : isNaN(ageInNumber)==true ? "NaN" : "NaN";
+    if(ageInText=="NaN")
+    {
+        return "NaN";
+    }
+    if(typeof(ageInText)!="string")
+    {
+        return NaN;
+    }
+    if(ageInNumber!=NaN)
+    {
+        return NaN;
+    }
 }
+// function doesFriendExist (ageInText, ageInNumber)
+// {
+//     return isNaN(ageInText)==true ? "NaN" : typeof(ageInText)=="string" ? "NaN" : isNaN(ageInNumber)==true ? "NaN" : "NaN";
+// }
 //Progression 4:
 //Lily gave Karen x sweets
 //Karen ate y sweets herself
@@ -29,7 +44,16 @@ function doesFriendExist (ageInText, ageInNumber)
 //How many sweets did her friend get to eat?
 function sweetTooth (totalNoOfSweets, sweetsConsumedByKaren, sweetsConsumedInNMeters, metersToTravel)
 {
-    return totalNoOfSweets-sweetsConsumedByKaren -(sweetsConsumedInNMeters * metersToTravel);
+    totalNoOfSweets = totalNoOfSweets-sweetsConsumedByKaren;
+    var lilyate = sweetsConsumedInNMeters*metersToTravel; 
+    if(lilyate <= totalNoOfSweets)
+    {
+        return (totalNoOfSweets-lilyate)/2;
+    }
+    else
+    {
+        return "No sweets for Karen's friend";
+    }
 }
 //Progression 5:
 //As Lily moves closer, it gets colder. She checks the temperature on her mobile
@@ -37,21 +61,13 @@ function sweetTooth (totalNoOfSweets, sweetsConsumedByKaren, sweetsConsumedInNMe
 function convertToCelsius (fahrenheit)
 {
     let errorMsg = "Technical Error! ";
-    if(typeof(fahrenheit)=="object")
+    if(typeof(fahrenheit)=="number")
     {
-        return errorMsg;
-    }
-    else if(typeof(fahrenheit)=="string")
-    {
-        return errorMsg;
-    }
-    else if(typeof(fahrenheit)=="undefined")
-    {
-        return errorMsg;
+        return (5/9) * (fahrenheit - 32);
     }
     else
     {
-        return (5/9) * (fahrenheit - 32);
+        return "Technical Error!";
     }
 }
 //Progression 6:
@@ -82,8 +98,8 @@ function aDifficultChoice (choice)
         case "I give up":
             return "Refused to do anything for Karen";
         break;
-        case undefined:
-            return "Break down and give up all hope";
+        default:
+            return "Wasn't able to decide";
         break;
       }
 }
@@ -95,3 +111,7 @@ function aDifficultChoice (choice)
 //Take all of Lily's strategies and concatenate them to a single var
 //Seperate the strategies by a single space
 //Return the length of the complete strategy
+function consoleKaren ()
+{
+    //not in it
+}
